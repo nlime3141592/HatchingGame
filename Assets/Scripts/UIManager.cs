@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static RectTransform s_ui_Debug;
     public static RectTransform s_ui_Menu;
     public static RectTransform s_ui_Option;
     public static RectTransform s_ui_History;
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     public static RectTransform s_ui_HatchingFailure;
 
     [Header("UI Canvas")]
+    public RectTransform ui_Debug;
     public RectTransform ui_Menu;
     public RectTransform ui_Option;
     public RectTransform ui_History;
@@ -19,6 +21,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        s_ui_Debug = ui_Debug;
         s_ui_Menu = ui_Menu;
         s_ui_Option = ui_Option;
         s_ui_History = ui_History;
