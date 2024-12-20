@@ -19,4 +19,23 @@ public class HatchingData
     [HideInInspector] public float bodyLength;
 
     [HideInInspector] public HatchingStatus hatchingStatus;
+
+    public HatchingData()
+    {
+
+    }
+
+    public HatchingData(HatchingData _source)
+    {
+        this.eggType = _source.eggType;
+        this.bugType = _source.bugType;
+        this.hatchingRequireTime = _source.hatchingRequireTime;
+        this.managingRequireTime = _source.managingRequireTime;
+        this.hatchingEndTime = _source.hatchingEndTime;
+        this.managingEndTime = _source.managingEndTime;
+        this.bodyLengthMin = _source.bodyLengthMin;
+        this.bodyLengthMax = _source.bodyLengthMax;
+        this.bodyLength = _source.bodyLength;
+        this.hatchingStatus = _source.hatchingStatus;
+    }
 }

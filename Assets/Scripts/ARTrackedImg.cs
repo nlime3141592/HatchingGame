@@ -42,7 +42,7 @@ public class ARTrackedImg : MonoBehaviour
 
         bugCylinder.transform.position = trackedImage.transform.position;
         bugCylinder.transform.rotation = trackedImage.transform.rotation;
-        UIManager.s_ui_Debug.GetComponentInChildren<UnityEngine.UI.Text>().text = imageSize.ToString();
+        // UIManager.s_ui_Debug.GetComponentInChildren<UnityEngine.UI.Text>().text = imageSize.ToString();
         bugCylinder.transform.localScale = new Vector3(imageSize.x, imageSize.x, imageSize.y);
         bugCylinder.SetActive(true);
     }

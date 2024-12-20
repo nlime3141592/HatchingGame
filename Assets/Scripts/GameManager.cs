@@ -5,42 +5,52 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static HatchingFile s_hatchingFile;
+    // public static HatchingFile s_hatchingFile;
 
     public static HatchingData s_currentHatchingDataOrNull;
     public static long s_currentTimestamp;
     public static HatchingStatus s_currentHatchingStatus;
 
+    public static HatchingDataSO s_currentHatchingDataSO;
+
     public static bool s_shouldManagingFlag;
 
+    public static List<HatchingDataSO> s_hatchingDataSO;
+
     public float autoSavePeriod = 60.0f;
+
+    public List<HatchingDataSO> hatchingDataSO;
+
+    public HatchingStatus debug_hatchingStatus;
 
     private float leftAutoSaveTime;
 
     private string hatchingFilePath;
 
-    private Thread loadThread;
-    private Thread saveThread;
+    // private Thread loadThread;
+    // private Thread saveThread;
 
     private void Awake()
     {
         leftAutoSaveTime = autoSavePeriod;
 
-        hatchingFilePath = Application.persistentDataPath + "/data/hatching_data_0.dat";
+        s_hatchingDataSO = hatchingDataSO;
 
-        LoadGameData();
+        // hatchingFilePath = Application.persistentDataPath + "/data/hatching_data_0.dat";
+
+        // LoadGameData();
     }
 
     private void Update()
     {
         UpdateHatchingState();
         UpdateManagingEgg();
-        UpdateAutoSave();
+        // UpdateAutoSave();
     }
 
     private void UpdateHatchingState()
     {
-        s_currentHatchingDataOrNull = GetCurrentHatchingEggOrNull();
+        // s_currentHatchingDataOrNull = GetCurrentHatchingEggOrNull();
         s_currentTimestamp = GetCurrentTimestamp();
 
         if (s_currentHatchingDataOrNull == null)
@@ -64,8 +74,10 @@ public class GameManager : MonoBehaviour
             else
                 s_currentHatchingStatus = HatchingStatus.Hatching;
         }
-    }
 
+        Debug.Log(s_currentHatchingStatus);
+    }
+    /*
     private void UpdateAutoSave()
     {
         if (leftAutoSaveTime > 0.0f)
@@ -78,7 +90,7 @@ public class GameManager : MonoBehaviour
             SaveGameData();
         }
     }
-
+    
     public void LoadGameData()
     {
         if (loadThread != null)
@@ -104,7 +116,7 @@ public class GameManager : MonoBehaviour
         s_hatchingFile = HatchingFile.LoadFile(this.hatchingFilePath);
         loadThread = null;
     }
-
+    
     private void OnSaveHatchingFile()
     {
         try
@@ -120,14 +132,14 @@ public class GameManager : MonoBehaviour
             saveThread = null;
         }
     }
-
+    */
     private long GetCurrentTimestamp()
     {
         DateTime dateTime = DateTime.UtcNow;
         long ticksPerSecond = 10000000;
         return dateTime.Ticks / ticksPerSecond;
     }
-
+    /*
     private static HatchingData GetCurrentHatchingEggOrNull()
     {
         List<HatchingData> hatchingDatas = s_hatchingFile.HatchingDatas;
@@ -147,14 +159,14 @@ public class GameManager : MonoBehaviour
 
         return null;
     }
-
+    */
     private void FetchEgg(HatchingData hatchingData)
     {
         hatchingData.hatchingStatus = HatchingStatus.Hatching;
         hatchingData.hatchingEndTime = s_currentTimestamp + hatchingData.hatchingRequireTime;
         hatchingData.managingEndTime = s_currentTimestamp + hatchingData.managingRequireTime;
 
-        SaveGameData();
+        // SaveGameData();
     }
 
     public static void ManagingEgg()
@@ -175,7 +187,7 @@ public class GameManager : MonoBehaviour
 
         hatchingData.managingEndTime = s_currentTimestamp + hatchingData.managingRequireTime;
 
-        SaveGameData();
+        // SaveGameData();
     }
 
     private void BreakEgg()
@@ -189,7 +201,7 @@ public class GameManager : MonoBehaviour
 
         hatchingData.bodyLength = bodyLength;
 
-        SaveGameData();
+        // SaveGameData();
     }
 
     private void ThrowEgg()

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b366b4282d9ac4f8fc2cbbbf56795c, type: 3}
+  m_Name: HatchingData2
+  m_EditorClassIdentifier: 
+  eggPrefabInWorld: {fileID: 0}
+  bugImage: {fileID: 21300000, guid: c9765b77043906e4cba4d0fb53162b6e, type: 3}
+  hatchingData:
+    recordNumber: 0
+    eggType: 0
+    bugType: 1
+    hatchingRequireTime: 72
+    managingRequireTime: 18
+    hatchingEndTime: 0
+    managingEndTime: 0
+    bodyLengthMin: 10
+    bodyLengthMax: 14.5
+    bodyLength: 0
+    hatchingStatus: 0
